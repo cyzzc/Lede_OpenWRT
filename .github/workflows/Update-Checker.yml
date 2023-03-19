@@ -1,0 +1,91 @@
+#
+# Copyright (c) 2019-2022 P3TERX <https://p3terx.com>
+#
+# This is free software, licensed under the MIT License.
+# See /LICENSE for more information.
+#
+# https://github.com/P3TERX/Actions-OpenWrt
+# File: .github/workflows/Update_Checker.yml
+# Description: Source code update checker
+#
+
+name: 更新检查
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: 20 5/3 * * *
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: 获取Commit Hash
+      id: getHash
+      run: |
+        git clone --depth 1 https://github.com/coolsnowwolf/lede -b master lede
+        cd lede
+        echo "commitHash_Lede=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+        cd
+        
+        git clone --depth 1 https://github.com/coolsnowwolf/packages -b master ledepackage
+        cd ledepackage
+        echo "commitHash_Lede_Package=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+        cd
+        
+        git clone --depth 1 https://github.com/coolsnowwolf/luci -b master luci
+        cd luci
+        echo "commitHash_Lede_Luci=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+        cd      
+         
+        git clone --depth 1 https://github.com/fw876/helloworld -b master helloworld 
+        cd helloworld
+        echo "commitHash_HelloWorld=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+        cd
+        
+        git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git -b packages passwall 
+        cd passwall
+        echo "commitHash_passwall=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+        cd
+        
+        git clone --depth 1 https://github.com/vernesong/OpenClash.git -b master OpenClash 
+        cd OpenClash
+        echo "commitHash_OpenClash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+        cd
+    - name: 整理Hash
+      id: combHeader
+      run: |
+        echo "commitHash_All=${{steps.getHash.outputs.commitHash_Lede}} ，${{steps.getHash.outputs.commitHash_Lede_Package}} ，${{steps.getHash.outputs.commitHash_Lede_Luci}} ，${{steps.getHash.outputs.commitHash_HelloWorld}}，${{steps.getHash.outputs.commitHash_passwall}}，${{steps.getHash.outputs.commitHash_smartdns}}，${{steps.getHash.outputs.commitHash_OpenClash}}" >> $GITHUB_OUTPUT
+          
+    - name: 对比Commit Hash
+      id: cacheHash
+      uses: actions/cache@v3
+      with:
+        path: .commitHash_All
+        key: HEAD-${{steps.combHeader.outputs.commitHash_All}}
+   
+
+    - name: 保存新的Commit Hash
+      if: steps.cacheHash.outputs.cache-hit != 'true'
+      run: |
+        #echo ${{ steps.getHash.outputs.commitHash_Lede }} | tee .commitHash_Lede
+        #echo ${{ steps.getHash.outputs.commitHash_Lede_Package }} | tee .commitHash_Lede_Package
+        #echo ${{ steps.getHash.outputs.commitHash_Lede_Luci }} | tee .commitHash_Lede_Luci
+        #echo ${{ steps.getHash.outputs.commitHash_HelloWorld }} | tee .commitHash_HelloWorld
+        echo ${{ steps.combHeader.outputs.commitHash_All }} | tee .commitHash_All
+
+    - name: 删除运行记录
+      uses: Mattraks/delete-workflow-runs@v2
+      with:
+        retain_days: 1
+        keep_minimum_runs: 1
+        
+    - name: 触发编译
+      if: steps.cacheHash.outputs.cache-hit != 'true'
+      uses: peter-evans/repository-dispatch@v2
+      with:
+        token: ${{ secrets.ACTIONS_TRIGGER_PAT }}
+        event-type: 上游源码更新触发编译
+
