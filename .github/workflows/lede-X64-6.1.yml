@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: LEDEX64K6.1
+name: LEDEX64-K6.1
 
 on:
   repository_dispatch:
@@ -84,7 +84,7 @@ jobs:
     - name: 更新feeds
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: 安装feeds、更新日期
+    - name: 安装feeds
       run: |
        cd openwrt && ./scripts/feeds install -a
        
