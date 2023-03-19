@@ -9,7 +9,7 @@
 # Description: Source code update checker
 #
 
-name: 更新检查
+name: Update Checker
 
 on:
   workflow_dispatch:
@@ -22,7 +22,7 @@ jobs:
 
     steps:
 
-    - name: 获取Commit Hash
+    - name: 获取 Commit Hash
       id: getHash
       run: |
         git clone --depth 1 https://github.com/coolsnowwolf/lede -b master lede
@@ -54,12 +54,12 @@ jobs:
         cd OpenClash
         echo "commitHash_OpenClash=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
         cd
-    - name: 整理Hash
+    - name: 整理 Hash
       id: combHeader
       run: |
         echo "commitHash_All=${{steps.getHash.outputs.commitHash_Lede}} ，${{steps.getHash.outputs.commitHash_Lede_Package}} ，${{steps.getHash.outputs.commitHash_Lede_Luci}} ，${{steps.getHash.outputs.commitHash_HelloWorld}}，${{steps.getHash.outputs.commitHash_passwall}}，${{steps.getHash.outputs.commitHash_OpenClash}}" >> $GITHUB_OUTPUT
           
-    - name: 对比Commit Hash
+    - name: 对比 Commit Hash
       id: cacheHash
       uses: actions/cache@v3
       with:
@@ -67,7 +67,7 @@ jobs:
         key: HEAD-${{steps.combHeader.outputs.commitHash_All}}
    
 
-    - name: 保存新的Commit Hash
+    - name: 保存新的 Commit Hash
       if: steps.cacheHash.outputs.cache-hit != 'true'
       run: |
         #echo ${{ steps.getHash.outputs.commitHash_Lede }} | tee .commitHash_Lede
