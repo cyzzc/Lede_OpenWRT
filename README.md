@@ -12,6 +12,9 @@
 ```bash
 src-git cyzzc_package https://github.com/cyzzc/Auto-Package
 ```
+```bash
+echo 'src-git cyzzc_package https://github.com/cyzzc/Auto-Package' >>feeds.conf.default
+```
    
    ## 致谢
 
