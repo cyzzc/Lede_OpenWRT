@@ -14,5 +14,4 @@
 #sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
 
 # Add a feed source 添加额外软件包
-echo 'src-git nezha https://github.com/Erope/openwrt_nezha' >>feeds.conf.default
-echo 'src-git cyzzc https://github.com/cyzzc/cyzzc-package' >>feeds.conf.default
+echo 'src-git cyzzc_package https://github.com/cyzzc/Auto-Package' >>feeds.conf.default
