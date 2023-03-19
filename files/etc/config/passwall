@@ -1,0 +1,489 @@
+
+config acl_rule
+	option enabled '1'
+	option remarks '乌班图'
+	option tcp_proxy_mode 'global'
+	option udp_proxy_mode 'global'
+	option sources '00:0C:29:FF:D4:0C'
+	option tcp_no_redir_ports 'default'
+	option udp_no_redir_ports 'default'
+	option tcp_proxy_drop_ports 'default'
+	option udp_proxy_drop_ports 'default'
+	option tcp_redir_ports 'default'
+	option udp_redir_ports 'default'
+	option tcp_node 'default'
+	option udp_node 'default'
+
+config acl_rule
+	option remarks '京东云'
+	option sources '00:0C:29:79:A4:74'
+	option tcp_no_redir_ports 'default'
+	option udp_no_redir_ports 'default'
+	option tcp_proxy_drop_ports 'default'
+	option udp_proxy_drop_ports 'default'
+	option tcp_redir_ports 'default'
+	option udp_redir_ports 'default'
+	option enabled '1'
+	option tcp_proxy_mode 'gfwlist'
+	option udp_proxy_mode 'gfwlist'
+	option tcp_node 'default'
+	option udp_node 'tcp'
+
+config acl_rule
+	option remarks '安博TV'
+	option sources '00:09:4C:C2:10:4D'
+	option tcp_no_redir_ports 'default'
+	option udp_no_redir_ports 'default'
+	option tcp_proxy_drop_ports 'default'
+	option udp_proxy_drop_ports 'default'
+	option tcp_redir_ports 'default'
+	option udp_redir_ports 'default'
+	option tcp_proxy_mode 'global'
+	option udp_proxy_mode 'global'
+	option tcp_node 'a9a8ffe27d59483e9ec1f4411287cd21'
+	option udp_node 'a9a8ffe27d59483e9ec1f4411287cd21'
+	option filter_proxy_ipv6 '1'
+	option dns_mode 'xray'
+	option v2ray_dns_mode 'doh'
+	option remote_dns_doh 'https://1.1.1.2/dns-query'
+	option enabled '1'
+
+config shunt_rules 'STEAM'
+	option remarks 'STEAM'
+	option domain_list 'api.steampowered.com
+regexp:\.cm.steampowered.com$
+regexp:\.steamserver.net$'
+	option ip_list '103.10.124.0/24
+103.10.125.0/24
+103.28.54.0/24
+146.66.152.0/24
+146.66.155.0/24
+153.254.86.0/24
+155.133.224.0/23
+155.133.226.0/24
+155.133.227.0/24
+155.133.230.0/24
+155.133.232.0/24
+155.133.233.0/24
+155.133.234.0/24
+155.133.236.0/23
+155.133.238.0/24
+155.133.239.0/24
+155.133.240.0/23
+155.133.245.0/24
+155.133.246.0/24
+155.133.248.0/24
+155.133.249.0/24
+155.133.250.0/24
+155.133.251.0/24
+155.133.252.0/24
+155.133.253.0/24
+155.133.254.0/24
+155.133.255.0/24
+162.254.192.0/24
+162.254.193.0/24
+162.254.194.0/23
+162.254.195.0/24
+162.254.196.0/24
+162.254.197.0/24
+162.254.198.0/24
+162.254.199.0/24
+185.25.182.0/24
+185.25.183.0/24
+190.217.33.0/24
+192.69.96.0/22
+205.185.194.0/24
+205.196.6.0/24
+208.64.200.0/24
+208.64.201.0/24
+208.64.202.0/24
+208.64.203.0/24
+208.78.164.0/22'
+
+config shunt_rules 'AD'
+	option remarks 'AD'
+	option domain_list 'geosite:category-ads-all'
+
+config shunt_rules 'BT'
+	option remarks 'BT'
+	option protocol 'bittorrent'
+
+config shunt_rules 'Netflix'
+	option remarks 'Netflix'
+	option domain_list 'geosite:netflix
+fast.com'
+
+config shunt_rules 'YouTube'
+	option remarks 'YouTube'
+	option domain_list 'geosite:youtube'
+
+config shunt_rules 'Disney'
+	option remarks 'Disney+'
+	option domain_list 'openai.com
+akadns.net
+akam.net
+akamai.com
+akamai.net
+akamaiedge.net
+akamaihd.net
+akamaistream.net
+akamaitech.net
+akamaitechnologies.com
+akamaitechnologies.fr
+akamaized.net
+disney.asia
+disney.be
+disney.bg
+disney.ca
+disney.ch
+disney.co.il
+disney.co.jp
+disney.co.kr
+disney.co.th
+disney.co.uk
+disney.co.za
+disney.com
+disney.com.au
+disney.com.br
+disney.com.hk
+disney.com.tw
+disney.cz
+disney.de
+disney.dk
+disney.es
+disney.fi
+disney.fr
+disney.gr
+disney.hu
+disney.id
+disney.in
+disney.io
+disney.it
+disney.my
+disney.nl
+disney.no
+disney.ph
+disney.pl
+disney.pt
+disney.ro
+disney.ru
+disney.se
+disney.sg
+20thcenturystudios.com.au
+20thcenturystudios.com.br
+20thcenturystudios.jp
+adventuresbydisney.com
+babble.com
+babyzone.com
+bamgrid.com
+beautyandthebeastmusical.co.uk
+dilcdn.com
+disney-asia.com
+disney-discount.com
+disney-plus.net
+disney-portal.my.onetrust.com
+disney-studio.com
+disney-studio.net
+disney.my.sentry.io
+disneyadsales.com
+disneyarena.com
+disneyaulani.com
+disneybaby.com
+disneycareers.com
+disneychannelonstage.com
+disneychannelroadtrip.com
+disneycruisebrasil.com
+disneyenconcert.com
+disneyiejobs.com
+disneyinflight.com
+disneyinternational.com
+disneyinternationalhd.com
+disneyjunior.com
+disneyjuniortreataday.com
+disneylatino.com
+disneymagicmoments.co.il
+disneymagicmoments.co.uk
+disneymagicmoments.co.za
+disneymagicmoments.de
+disneymagicmoments.es
+disneymagicmoments.fr
+disneymagicmoments.gen.tr
+disneymagicmoments.gr
+disneymagicmoments.it
+disneymagicmoments.pl
+disneymagicmomentsme.com
+disneyme.com
+disneymeetingsandevents.com
+disneymovieinsiders.com
+disneymusicpromotion.com
+disneynewseries.com
+disneynow.com
+disneypeoplesurveys.com
+disneyplus.bn5x.net
+disneyplus.com
+disneyplus.com.ssl.sc.omtrdc.net
+disneyredirects.com
+disneysrivieraresort.com
+disneystore.com
+disneystreaming.com
+disneysubscription.com
+disneytickets.co.uk
+disneyturkiye.com.tr
+disneytvajobs.com
+disneyworld-go.com
+dssott.com
+go-disneyworldgo.com
+go.com
+mickey.tv
+moviesanywhere.com
+nomadlandmovie.ch
+playmation.com
+shopdisney.com
+shops-disney.com
+sorcerersarena.com
+spaindisney.com
+star-brasil.com
+star-latam.com
+starwars.com
+starwarsgalacticstarcruiser.com
+starwarskids.com
+streamingdisney.net
+thestationbymaker.com
+thisispolaris.com
+watchdisneyfe.com'
+
+config shunt_rules 'UBTV'
+	option domain_list 'mytvsuper.com
+ub1818.com
+ub6789.com
+openai.com
+uvod.tv'
+	option remarks '安博电视'
+
+config shunt_rules 'nivodTV'
+	option remarks '泥视频'
+	option domain_list 'biggggg.com
+barscreative1.com
+creative-bars1.com
+cloudimagesb.com
+friendshipmale.com
+google-analytics.com
+gstatic.com
+googleapis.com
+googletagmanager.com
+highcpmrevenuenetwork.com
+olelive.com
+plausible.io
+rnseenreport.com
+repayrotten.com
+unseenreport.com
+newpppp.com
+nbyy.tv
+nivodz.com
+nivod3.tv
+nivod1.tv
+nivod2.tv
+nivod.tv
+nbys.tv
+nivod4.tv
+mudvod.tv
+haitu.tv'
+
+config shunt_rules 'SunshineTV'
+	option remarks '晴天 TV'
+	option domain_list 'weixingdianshiptv.com'
+
+config shunt_rules 'Tiktok'
+	option remarks 'Tiktok'
+	option domain_list 'tik-tokapi.com
+byteoversea.com
+tiktokv.com'
+
+config shunt_rules 'Proxy'
+	option remarks 'Proxy'
+	option ip_list '149.154.160.0/20
+91.108.4.0/22
+91.108.56.0/24
+109.239.140.0/24
+67.198.55.0/24
+8.8.4.4
+8.8.8.8
+208.67.222.222
+208.67.220.220
+1.1.1.1
+1.1.1.2
+1.0.0.1
+9.9.9.9
+149.112.112.112
+2001:67c:4e8::/48
+2001:b28:f23c::/48
+2001:b28:f23d::/48
+2001:b28:f23f::/48
+2001:b28:f242::/48
+2001:4860:4860::8888
+2001:4860:4860::8844
+2606:4700:4700::1111
+2606:4700:4700::1001'
+	option domain_list 'geosite:geolocation-!cn
+geosite:google@cn'
+
+config shunt_rules 'Direct'
+	option remarks 'Direct'
+	option domain_list 'geosite:category-games@cn
+geosite:cn'
+	option ip_list '223.5.5.5/32
+119.29.29.29/32
+180.76.76.76/32
+114.114.114.114/32
+geoip:cn
+geoip:private'
+
+config nodes 'myshunt'
+	option remarks '分流总节点'
+	option protocol '_shunt'
+	option STEAM '_direct'
+	option AD '_blackhole'
+	option BT '_direct'
+	option Proxy '_default'
+	option Direct '_direct'
+	option domainStrategy 'IPOnDemand'
+	option domainMatcher 'hybrid'
+	option main_node 'nil'
+	option SunshineTV '_direct'
+	option type 'V2ray'
+	option Netflix '_default'
+	option YouTube '_default'
+	option Disney '_default'
+	option UBTV '_default'
+	option nivodTV '_default'
+	option Tiktok '_default'
+	option default_node '_direct'
+
+config nodes 'add79a6c533c4064be73b2c840a85ca8'
+	option tls '1'
+	option uuid 'a60cb206-a5e3-5644-a6fd-c529e378b62e'
+	option add_mode '1'
+	option remarks '负载均衡'
+	option address '127.0.0.1'
+	option port '1181'
+	option alpn 'default'
+	option tls_allowInsecure '1'
+	option type 'Xray'
+	option protocol 'vless'
+	option encryption 'none'
+	option transport 'tcp'
+	option tcp_guise 'none'
+	option tlsflow 'xtls-rprx-vision'
+	option fingerprint 'chrome'
+
+config global
+	option tcp_node_socks_port '1070'
+	option localhost_tcp_proxy_mode 'default'
+	option localhost_udp_proxy_mode 'default'
+	option close_log_tcp '0'
+	option close_log_udp '0'
+	option loglevel 'error'
+	option trojan_loglevel '4'
+	option dns_shunt 'smartdns'
+	option group_domestic 'CN'
+	option filter_proxy_ipv6 '1'
+	list smartdns_remote_dns 'https://1.1.1.1/dns-query'
+	list smartdns_remote_dns 'https://8.8.4.4/dns-query'
+	list smartdns_remote_dns 'https://8.8.8.8/dns-query'
+	list smartdns_remote_dns 'https://9.9.9.9/dns-query'
+	list smartdns_remote_dns 'https://208.67.222.222/dns-query'
+	list smartdns_remote_dns 'https://dns.adguard.com/dns-query,176.103.130.130'
+	list smartdns_remote_dns 'https://doh.libredns.gr/dns-query,116.202.176.26'
+	list smartdns_remote_dns 'https://doh.libredns.gr/ads,116.202.176.26'
+	option tcp_proxy_mode 'chnroute'
+	option udp_proxy_mode 'chnroute'
+	option enabled '0'
+	option socks_enabled '0'
+	option acl_enable '0'
+	option tcp_node 'nil'
+	option udp_node 'nil'
+
+config global_haproxy
+	option balancing_enable '0'
+
+config global_delay
+	option auto_on '0'
+	option start_daemon '1'
+	option start_delay '3'
+
+config global_forwarding
+	option tcp_no_redir_ports 'disable'
+	option udp_no_redir_ports 'disable'
+	option tcp_proxy_drop_ports 'disable'
+	option udp_proxy_drop_ports '80,443'
+	option tcp_redir_ports '22,25,53,143,465,587,853,993,995,80,443'
+	option udp_redir_ports '1:65535'
+	option accept_icmp '0'
+	option use_nft '0'
+	option tcp_proxy_way 'redirect'
+	option ipv6_tproxy '0'
+	option sniffing '1'
+	option route_only '0'
+
+config global_other
+	option nodes_ping 'auto_ping tcping'
+
+config global_rules
+	option chnlist_update '1'
+	option chnroute_update '1'
+	option chnroute6_update '1'
+	option gfwlist_update '1'
+	list gfwlist_url 'https://fastly.jsdelivr.net/gh/Loyalsoldier/v2ray-rules-dat@release/gfw.txt'
+	list chnroute_url 'https://ispip.clang.cn/all_cn.txt'
+	list chnroute_url 'https://fastly.jsdelivr.net/gh/gaoyifan/china-operator-ip@ip-lists/china.txt'
+	list chnroute6_url 'https://ispip.clang.cn/all_cn_ipv6.txt'
+	list chnroute6_url 'https://fastly.jsdelivr.net/gh/gaoyifan/china-operator-ip@ip-lists/china6.txt'
+	list chnlist_url 'https://fastly.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/accelerated-domains.china.conf'
+	list chnlist_url 'https://fastly.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/apple.china.conf'
+	list chnlist_url 'https://fastly.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/google.china.conf'
+	option v2ray_location_asset '/usr/share/v2ray/'
+	option auto_update '1'
+	option week_update '1'
+	option time_update '0'
+	option geoip_update '1'
+	option geosite_update '1'
+
+config global_app
+	option v2ray_file '/usr/bin/v2ray'
+	option xray_file '/usr/bin/xray'
+	option trojan_go_file '/usr/bin/trojan-go'
+	option brook_file '/usr/bin/brook'
+	option hysteria_file '/usr/bin/hysteria'
+
+config global_subscribe
+	option filter_keyword_mode '1'
+	list filter_discard_list '过期时间'
+	list filter_discard_list '剩余流量'
+	list filter_discard_list 'QQ群'
+	list filter_discard_list '官网'
+	option ss_aead_type 'shadowsocks-libev'
+	option trojan_type 'trojan-plus'
+
+config auto_switch
+	option enable '0'
+	option testing_time '1'
+	option connect_timeout '3'
+	option retry_num '3'
+	option shunt_logic '1'
+
+config subscribe_list
+	option allowInsecure '0'
+	option filter_keyword_mode '5'
+	option ss_aead_type 'global'
+	option trojan_type 'global'
+	option auto_update '0'
+	option user_agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36'
+	option remark '自建'
+	option url 'https://'
+
+config socks '3cb0ae95a4c742828ed60781bd4d5180'
+	option enabled '1'
+	option http_port '1081'
+	option port '1080'
+	option node 'add79a6c533c4064be73b2c840a85ca8'
+
