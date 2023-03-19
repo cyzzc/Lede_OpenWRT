@@ -8,7 +8,7 @@
 # Description: Build OpenWrt using GitHub Actions
 #
 
-name: LEDEX64K5.10
+name: LEDEX64-K5.10
 
 on:
   repository_dispatch:
