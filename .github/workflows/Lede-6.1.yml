@@ -31,6 +31,8 @@ env:
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
+  TELEGRAM_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
+  TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
   TZ: Asia/Shanghai
 
 jobs:
@@ -54,6 +56,12 @@ jobs:
         sudo mkdir -p /workdir
         sudo chown $USER:$GROUPS /workdir
         
+    - name: 电报机器人 Telegram notification
+      if: env.TELEGRAM_TOKEN && ! contains(github.event.action, 'notg')
+      continue-on-error: true
+      run: |
+        curl -k --data chat_id="${{ env.TELEGRAM_CHAT_ID }}" --data "text=🎉 cyzzc@msn.com ${{ env.VERSION }} ${{matrix.target}} 开始编译OpenWrt_Lede-6.1 😋" "https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage"        
+    
     - name: 克隆源代码
       working-directory: /workdir
       run: |
@@ -111,7 +119,7 @@ jobs:
       run: |
         cd openwrt
         echo -e "$(nproc) thread compile"
-        make -j$(nproc) || make -j1 || make -j1 V=s
+        make -j$(nproc) || make -j1 || make -j1 V=s || (curl -k --data chat_id="${{ env.TELEGRAM_CHAT_ID }}" --data "text=❌ OpenWrt_Lede-6.1 ${{ env.VERSION }} ${{matrix.target}} 编译失败 😂" "https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage";exit 1)     
         echo "status=success" >> $GITHUB_OUTPUT
         grep '^CONFIG_TARGET.*DEVICE.*=y' .config | sed -r 's/.*DEVICE_(.*)=y/\1/' > DEVICE_NAME
         [ -s DEVICE_NAME ] && echo "DEVICE_NAME=_$(cat DEVICE_NAME)" >> $GITHUB_ENV
@@ -133,7 +141,7 @@ jobs:
       if: steps.compile.outputs.status == 'success' && env.UPLOAD_FIRMWARE == 'true' && !cancelled()
       run: |
         cd openwrt/bin/targets/*/*
-        rm -rf packages
+        rm -rf packages && rm -rf *.buildinfo && rm -rf *.manifest && rm -rf *.bin && rm -rf *.manifest && rm -rf sha256sums && rm -rf *-rootfs.img.gz     
         echo "FIRMWARE=$PWD" >> $GITHUB_ENV
         echo "status=success" >> $GITHUB_OUTPUT
         
@@ -165,6 +173,12 @@ jobs:
         body_path: release.txt
         files: ${{ env.FIRMWARE }}/*        
       
+    - name: 电报机器人 Telegram notification
+      if: env.TELEGRAM_TOKEN && ! contains(github.event.action, 'notg')
+      continue-on-error: true
+      run: |
+        curl -k --data chat_id="${{ env.TELEGRAM_CHAT_ID }}" --data "text=🎉 cyzzc@msn.com ${{ env.VERSION }} ${{matrix.target}} OpenWrt_Lede-6.1编译成功 😋" "https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage"
+
     - name: 删除运行的工作流
       uses: Mattraks/delete-workflow-runs@v2
       with:
