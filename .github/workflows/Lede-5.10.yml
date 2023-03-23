@@ -170,7 +170,7 @@ jobs:
       if: env.TELEGRAM_TOKEN && ! contains(github.event.action, 'notg')
       continue-on-error: true
       run: |
-        curl -k --data chat_id="${{ env.TELEGRAM_CHAT_ID }}" --data "text=🎉 cyzzc@msn.com ${{ env.VERSION }} ${{matrix.target}} OpenWrt_Lede-5.10编译成功 😋" "https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage"
+        curl -k --data chat_id="${{ env.TELEGRAM_CHAT_ID }}" --data "text=🎉 cyzzc@msn.com ${{ env.VERSION }} ${{matrix.target}} OpenWrt_Lede-5.10编译成功 😋 https://github.com/cyzzc/Lede_OpenWRT/releases" "https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage"
 
     - name: 删除运行的工作流
       uses: Mattraks/delete-workflow-runs@v2
