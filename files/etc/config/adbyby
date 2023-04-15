@@ -1,3 +1,16 @@
+
+config acl_rule
+	option filter_mode 'disable'
+	option ipaddr '192.168.1.7'
+
+config acl_rule
+	option filter_mode 'disable'
+	option ipaddr '192.168.1.21'
+
+config acl_rule
+	option filter_mode 'disable'
+	option ipaddr '192.168.1.22'
+
 config adbyby
 	option daemon '2'
 	option lan_mode '0'
@@ -9,6 +22,7 @@ config adbyby
 	option enable '1'
 	option block_cnshort '0'
 	list subscribe_url 'https://anti-ad.net/anti-ad-for-dnsmasq.conf'
-        list subscribe_url 'https://raw.githubusercontent.com/o0HalfLife0o/list/master/ad.txt'
+	list subscribe_url 'https://raw.githubusercontent.com/o0HalfLife0o/list/master/ad.txt'
 	list subscribe_url 'https://raw.githubusercontent.com/o0HalfLife0o/list/master/ad2.txt'
 	list subscribe_url 'https://raw.githubusercontent.com/o0HalfLife0o/list/master/ad3.txt'
+
