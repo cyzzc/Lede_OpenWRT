@@ -2,8 +2,6 @@
 config acl_rule
 	option enabled '1'
 	option remarks '乌班图'
-	option tcp_proxy_mode 'global'
-	option udp_proxy_mode 'global'
 	option sources '00:0C:29:FF:D4:0C'
 	option tcp_no_redir_ports 'default'
 	option udp_no_redir_ports 'default'
@@ -11,6 +9,8 @@ config acl_rule
 	option udp_proxy_drop_ports 'default'
 	option tcp_redir_ports 'default'
 	option udp_redir_ports 'default'
+	option tcp_proxy_mode 'global'
+	option udp_proxy_mode 'global'
 	option tcp_node 'default'
 	option udp_node 'default'
 
@@ -26,10 +26,14 @@ config acl_rule
 	option enabled '1'
 	option tcp_proxy_mode 'gfwlist'
 	option udp_proxy_mode 'gfwlist'
-	option tcp_node 'default'
 	option udp_node 'tcp'
+	option tcp_node 'add79a6c533c4064be73b2c840a85ca8'
+	option dns_mode 'xray'
+	option v2ray_dns_mode 'doh'
+	option remote_dns_doh 'https://1.1.1.2/dns-query'
 
 config acl_rule
+	option enabled '1'
 	option remarks '安博TV'
 	option sources '00:09:4C:C2:10:4D'
 	option tcp_no_redir_ports 'default'
@@ -40,13 +44,8 @@ config acl_rule
 	option udp_redir_ports 'default'
 	option tcp_proxy_mode 'global'
 	option udp_proxy_mode 'global'
-	option tcp_node 'a9a8ffe27d59483e9ec1f4411287cd21'
-	option udp_node 'a9a8ffe27d59483e9ec1f4411287cd21'
-	option filter_proxy_ipv6 '1'
-	option dns_mode 'xray'
-	option v2ray_dns_mode 'doh'
-	option remote_dns_doh 'https://1.1.1.2/dns-query'
-	option enabled '1'
+	option tcp_node 'default'
+	option udp_node 'default'
 
 config shunt_rules 'STEAM'
 	option remarks 'STEAM'
@@ -110,30 +109,8 @@ config shunt_rules 'BT'
 
 config shunt_rules 'Netflix'
 	option remarks 'Netflix'
-	option domain_list 'fast.com
-netflix
-netflix.ca
-netflix.com
-netflix.net
-nflxso.net
-nflxext.com
-nflximg.com
-nflximg.net
-nflxsearch.net
-nflxvideo.net
-netflixdnstest0.com
-netflixdnstest1.com
-netflixdnstest2.com
-netflixdnstest3.com
-netflixdnstest4.com
-netflixdnstest5.com
-netflixdnstest6.com
-netflixdnstest7.com
-netflixdnstest8.com
-netflixdnstest9.com
-netflixdnstest10.com
-netflixinvestor.com
-netflixtechblog.com'
+	option domain_list 'geosite:netflix
+fast.com'
 
 config shunt_rules 'YouTube'
 	option remarks 'YouTube'
@@ -141,138 +118,7 @@ config shunt_rules 'YouTube'
 
 config shunt_rules 'Disney'
 	option remarks 'Disney+'
-	option domain_list 'openai.com
-akadns.net
-akam.net
-akamai.com
-akamai.net
-akamaiedge.net
-akamaihd.net
-akamaistream.net
-akamaitech.net
-akamaitechnologies.com
-akamaitechnologies.fr
-akamaized.net
-disney.asia
-disney.be
-disney.bg
-disney.ca
-disney.ch
-disney.co.il
-disney.co.jp
-disney.co.kr
-disney.co.th
-disney.co.uk
-disney.co.za
-disney.com
-disney.com.au
-disney.com.br
-disney.com.hk
-disney.com.tw
-disney.cz
-disney.de
-disney.dk
-disney.es
-disney.fi
-disney.fr
-disney.gr
-disney.hu
-disney.id
-disney.in
-disney.io
-disney.it
-disney.my
-disney.nl
-disney.no
-disney.ph
-disney.pl
-disney.pt
-disney.ro
-disney.ru
-disney.se
-disney.sg
-20thcenturystudios.com.au
-20thcenturystudios.com.br
-20thcenturystudios.jp
-adventuresbydisney.com
-babble.com
-babyzone.com
-bamgrid.com
-beautyandthebeastmusical.co.uk
-dilcdn.com
-disney-asia.com
-disney-discount.com
-disney-plus.net
-disney-portal.my.onetrust.com
-disney-studio.com
-disney-studio.net
-disney.my.sentry.io
-disneyadsales.com
-disneyarena.com
-disneyaulani.com
-disneybaby.com
-disneycareers.com
-disneychannelonstage.com
-disneychannelroadtrip.com
-disneycruisebrasil.com
-disneyenconcert.com
-disneyiejobs.com
-disneyinflight.com
-disneyinternational.com
-disneyinternationalhd.com
-disneyjunior.com
-disneyjuniortreataday.com
-disneylatino.com
-disneymagicmoments.co.il
-disneymagicmoments.co.uk
-disneymagicmoments.co.za
-disneymagicmoments.de
-disneymagicmoments.es
-disneymagicmoments.fr
-disneymagicmoments.gen.tr
-disneymagicmoments.gr
-disneymagicmoments.it
-disneymagicmoments.pl
-disneymagicmomentsme.com
-disneyme.com
-disneymeetingsandevents.com
-disneymovieinsiders.com
-disneymusicpromotion.com
-disneynewseries.com
-disneynow.com
-disneypeoplesurveys.com
-disneyplus.bn5x.net
-disneyplus.com
-disneyplus.com.ssl.sc.omtrdc.net
-disneyredirects.com
-disneysrivieraresort.com
-disneystore.com
-disneystreaming.com
-disneysubscription.com
-disneytickets.co.uk
-disneyturkiye.com.tr
-disneytvajobs.com
-disneyworld-go.com
-dssott.com
-go-disneyworldgo.com
-go.com
-mickey.tv
-moviesanywhere.com
-nomadlandmovie.ch
-playmation.com
-shopdisney.com
-shops-disney.com
-sorcerersarena.com
-spaindisney.com
-star-brasil.com
-star-latam.com
-starwars.com
-starwarsgalacticstarcruiser.com
-starwarskids.com
-streamingdisney.net
-thestationbymaker.com
-thisispolaris.com
-watchdisneyfe.com'
+	option domain_list 'geosite:disney'
 
 config shunt_rules 'UBTV'
 	option domain_list 'mytvsuper.com
@@ -320,6 +166,10 @@ config shunt_rules 'Tiktok'
 	option domain_list 'tik-tokapi.com
 byteoversea.com
 tiktokv.com'
+
+config shunt_rules 'OpenAI'
+	option remarks 'OpenAI'
+	option domain_list 'openai.com'
 
 config shunt_rules 'Proxy'
 	option remarks 'Proxy'
@@ -370,36 +220,35 @@ config nodes 'myshunt'
 	option Direct '_direct'
 	option domainStrategy 'IPOnDemand'
 	option domainMatcher 'hybrid'
-	option main_node 'nil'
 	option SunshineTV '_direct'
-	option type 'V2ray'
-	option Netflix '_default'
-	option YouTube '_default'
-	option Disney '_default'
-	option UBTV '_default'
-	option nivodTV '_default'
-	option Tiktok '_default'
-	option default_node '_direct'
+	option type 'Xray'
+	option preproxy_enabled '1'
+	option main_node 'add79a6c533c4064be73b2c840a85ca8'
+	option Netflix_proxy_tag 'main'
+	option YouTube_proxy_tag 'main'
+	option Disney_proxy_tag 'main'
+	option UBTV_proxy_tag 'nil'
+	option nivodTV_proxy_tag 'nil'
+	option Tiktok_proxy_tag 'main'
+	option default_proxy_tag 'nil'
+	option OpenAI_proxy_tag 'nil'
+	option default_node 'add79a6c533c4064be73b2c840a85ca8'
+	option Netflix 'nil'
+	option YouTube 'nil'
+	option Disney 'nil'
+	option UBTV 'nil'
+	option nivodTV 'nil'
+	option Tiktok 'nil'
+	option OpenAI 'nil'
 
 config nodes 'add79a6c533c4064be73b2c840a85ca8'
-	option tls '1'
-	option uuid 'a60cb206-a5e3-5644-a6fd-c529e378b62e'
 	option add_mode '1'
 	option remarks '负载均衡'
 	option address '127.0.0.1'
 	option port '1181'
-	option alpn 'default'
-	option tls_allowInsecure '1'
-	option type 'Xray'
-	option protocol 'vless'
-	option encryption 'none'
-	option transport 'tcp'
-	option tcp_guise 'none'
-	option tlsflow 'xtls-rprx-vision'
-	option fingerprint 'chrome'
+	option type 'Socks'
 
 config global
-	option tcp_node_socks_port '1070'
 	option localhost_tcp_proxy_mode 'default'
 	option localhost_udp_proxy_mode 'default'
 	option close_log_tcp '0'
@@ -409,24 +258,23 @@ config global
 	option dns_shunt 'smartdns'
 	option group_domestic 'CN'
 	option filter_proxy_ipv6 '1'
-	list smartdns_remote_dns 'https://1.1.1.1/dns-query'
-	list smartdns_remote_dns 'https://8.8.4.4/dns-query'
-	list smartdns_remote_dns 'https://8.8.8.8/dns-query'
-	list smartdns_remote_dns 'https://9.9.9.9/dns-query'
-	list smartdns_remote_dns 'https://208.67.222.222/dns-query'
-	list smartdns_remote_dns 'https://dns.adguard.com/dns-query,176.103.130.130'
-	list smartdns_remote_dns 'https://doh.libredns.gr/dns-query,116.202.176.26'
-	list smartdns_remote_dns 'https://doh.libredns.gr/ads,116.202.176.26'
 	option tcp_proxy_mode 'chnroute'
 	option udp_proxy_mode 'chnroute'
+	option advanced_log_feature '0'
+	list smartdns_remote_dns '192.168.1.2:65432'
 	option enabled '0'
 	option socks_enabled '0'
-	option acl_enable '0'
 	option tcp_node 'nil'
 	option udp_node 'nil'
+	option acl_enable '0'
 
 config global_haproxy
-	option balancing_enable '0'
+	option balancing_enable '1'
+	option console_user 'aaaaa'
+	option console_password 'aaaaa'
+	option console_port '1188'
+	option health_check_type 'passwall_logic'
+	option health_check_inter '60'
 
 config global_delay
 	option auto_on '0'
@@ -487,11 +335,12 @@ config global_subscribe
 	option trojan_type 'trojan-plus'
 
 config auto_switch
-	option enable '0'
 	option testing_time '1'
 	option connect_timeout '3'
 	option retry_num '3'
 	option shunt_logic '1'
+	option restore_switch '1'
+	option enable '0'
 
 config subscribe_list
 	option allowInsecure '0'
