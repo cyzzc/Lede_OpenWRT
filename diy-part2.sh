@@ -26,7 +26,7 @@ sed -i 's@.*CYXluq4wUazHjmCDBCqXF*@#&@g' package/lean/default-settings/files/zzz
 
 ########### 更新lean的内置的open-vm-tools版本 ###########
 sed -i 's/11.3.0/12.2.5/g' feeds/packages/utils/open-vm-tools/Makefile
-sed -i 's/9bad3ee755340853bf7990e92f3d3880959a73e0749e8aaae62730854368bd2c/8e4cfd94553cfeeb45b195864a30ccb6b18d17ef/g' feeds/packages/utils/open-vm-tools/Makefile
+sed -i 's/472d7c69cd4b344e9ced18962cebdd3943fd5f10/8e4cfd94553cfeeb45b195864a30ccb6b18d17ef/g' feeds/packages/utils/open-vm-tools/Makefile
 sed -i 's/^PKG_MIRROR_HASH/#&/' feeds/packages/utils/open-vm-tools/Makefile
 
 ########### 安装smartdns（必选）###########
