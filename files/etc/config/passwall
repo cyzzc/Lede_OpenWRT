@@ -1,57 +1,11 @@
 
-config acl_rule
-	option enabled '1'
-	option remarks '乌班图'
-	option sources '00:0C:29:FF:D4:0C'
-	option tcp_no_redir_ports 'default'
-	option udp_no_redir_ports 'default'
-	option tcp_proxy_drop_ports 'default'
-	option udp_proxy_drop_ports 'default'
-	option tcp_redir_ports 'default'
-	option udp_redir_ports 'default'
-	option tcp_proxy_mode 'global'
-	option udp_proxy_mode 'global'
-	option tcp_node 'default'
-	option udp_node 'default'
-
-config acl_rule
-	option remarks '京东云'
-	option sources '00:0C:29:79:A4:74'
-	option tcp_no_redir_ports 'default'
-	option udp_no_redir_ports 'default'
-	option tcp_proxy_drop_ports 'default'
-	option udp_proxy_drop_ports 'default'
-	option tcp_redir_ports 'default'
-	option udp_redir_ports 'default'
-	option enabled '1'
-	option tcp_proxy_mode 'gfwlist'
-	option udp_proxy_mode 'gfwlist'
-	option udp_node 'tcp'
-	option tcp_node 'add79a6c533c4064be73b2c840a85ca8'
-	option dns_mode 'xray'
-	option v2ray_dns_mode 'doh'
-	option remote_dns_doh 'https://1.1.1.2/dns-query'
-
-config acl_rule
-	option enabled '1'
-	option remarks '安博TV'
-	option sources '00:09:4C:C2:10:4D'
-	option tcp_no_redir_ports 'default'
-	option udp_no_redir_ports 'default'
-	option tcp_proxy_drop_ports 'default'
-	option udp_proxy_drop_ports 'default'
-	option tcp_redir_ports 'default'
-	option udp_redir_ports 'default'
-	option tcp_proxy_mode 'global'
-	option udp_proxy_mode 'global'
-	option tcp_node 'default'
-	option udp_node 'default'
-
-config shunt_rules 'STEAM'
-	option remarks 'STEAM'
+config shunt_rules 'DirectGame'
+	option remarks 'DirectGame'
 	option domain_list 'api.steampowered.com
 regexp:\.cm.steampowered.com$
-regexp:\.steamserver.net$'
+regexp:\.steamserver.net$
+geosite:category-games@cn
+'
 	option ip_list '103.10.124.0/24
 103.10.125.0/24
 103.28.54.0/24
@@ -99,6 +53,12 @@ regexp:\.steamserver.net$'
 208.64.203.0/24
 208.78.164.0/22'
 
+config shunt_rules 'ProxyGame'
+	option remarks 'ProxyGame'
+	option domain_list 'geosite:category-games@!cn
+domain:store.steampowered.com
+'
+
 config shunt_rules 'AD'
 	option remarks 'AD'
 	option domain_list 'geosite:category-ads-all'
@@ -120,14 +80,6 @@ config shunt_rules 'Disney'
 	option remarks 'Disney+'
 	option domain_list 'geosite:disney'
 
-config shunt_rules 'UBTV'
-	option domain_list 'mytvsuper.com
-ub1818.com
-ub6789.com
-openai.com
-uvod.tv'
-	option remarks '安博电视'
-
 config shunt_rules 'nivodTV'
 	option remarks '泥视频'
 	option domain_list 'biggggg.com
@@ -147,6 +99,7 @@ repayrotten.com
 unseenreport.com
 newpppp.com
 nbyy.tv
+nbyy.cc
 nivodz.com
 nivod3.tv
 nivod1.tv
@@ -157,10 +110,6 @@ nivod4.tv
 mudvod.tv
 haitu.tv'
 
-config shunt_rules 'SunshineTV'
-	option remarks '晴天 TV'
-	option domain_list 'weixingdianshiptv.com'
-
 config shunt_rules 'Tiktok'
 	option remarks 'Tiktok'
 	option domain_list 'tik-tokapi.com
@@ -169,10 +118,11 @@ tiktokv.com'
 
 config shunt_rules 'OpenAI'
 	option remarks 'OpenAI'
-	option domain_list 'openai.com'
+	option domain_list 'geosite:openai'
 
 config shunt_rules 'Proxy'
 	option remarks 'Proxy'
+	option domain_list 'geosite:geolocation-!cn'
 	option ip_list '149.154.160.0/20
 91.108.4.0/22
 91.108.56.0/24
@@ -196,13 +146,10 @@ config shunt_rules 'Proxy'
 2001:4860:4860::8844
 2606:4700:4700::1111
 2606:4700:4700::1001'
-	option domain_list 'geosite:geolocation-!cn
-geosite:google@cn'
 
 config shunt_rules 'Direct'
 	option remarks 'Direct'
-	option domain_list 'geosite:category-games@cn
-geosite:cn'
+	option domain_list 'geosite:cn'
 	option ip_list '223.5.5.5/32
 119.29.29.29/32
 180.76.76.76/32
@@ -210,76 +157,38 @@ geosite:cn'
 geoip:cn
 geoip:private'
 
-config nodes 'myshunt'
-	option remarks '分流总节点'
-	option protocol '_shunt'
-	option STEAM '_direct'
-	option AD '_blackhole'
-	option BT '_direct'
-	option Proxy '_default'
-	option Direct '_direct'
-	option domainStrategy 'IPOnDemand'
-	option domainMatcher 'hybrid'
-	option SunshineTV '_direct'
-	option type 'Xray'
-	option preproxy_enabled '1'
-	option main_node 'add79a6c533c4064be73b2c840a85ca8'
-	option Netflix_proxy_tag 'main'
-	option YouTube_proxy_tag 'main'
-	option Disney_proxy_tag 'main'
-	option UBTV_proxy_tag 'nil'
-	option nivodTV_proxy_tag 'nil'
-	option Tiktok_proxy_tag 'main'
-	option default_proxy_tag 'nil'
-	option OpenAI_proxy_tag 'nil'
-	option default_node 'add79a6c533c4064be73b2c840a85ca8'
-	option Netflix 'nil'
-	option YouTube 'nil'
-	option Disney 'nil'
-	option UBTV 'nil'
-	option nivodTV 'nil'
-	option Tiktok 'nil'
-	option OpenAI 'nil'
-
-config nodes 'add79a6c533c4064be73b2c840a85ca8'
-	option add_mode '1'
-	option remarks '负载均衡'
-	option address '127.0.0.1'
-	option port '1181'
-	option type 'Socks'
-
 config global
+	option tcp_node_socks_port '1070'
+	option tcp_proxy_mode 'chnroute'
+	option udp_proxy_mode 'chnroute'
 	option localhost_tcp_proxy_mode 'default'
 	option localhost_udp_proxy_mode 'default'
+	option acl_enable '0'
 	option close_log_tcp '0'
 	option close_log_udp '0'
 	option loglevel 'error'
 	option trojan_loglevel '4'
+	option advanced_log_feature '0'
 	option dns_shunt 'smartdns'
 	option group_domestic 'CN'
-	option filter_proxy_ipv6 '1'
-	option tcp_proxy_mode 'chnroute'
-	option udp_proxy_mode 'chnroute'
-	option advanced_log_feature '0'
-	list smartdns_remote_dns '192.168.1.2:65432'
+	list smartdns_remote_dns 'https://8.8.4.4/dns-query'
+	list smartdns_remote_dns 'https://9.9.9.9/dns-query'
+	list smartdns_remote_dns 'https://1.1.1.1/dns-query'
+	option tcp_node 'myshunt'
+	option udp_node 'SkcUzm24'
+	option socks_enabled '1'
 	option enabled '0'
-	option socks_enabled '0'
-	option tcp_node 'nil'
-	option udp_node 'nil'
-	option acl_enable '0'
 
 config global_haproxy
 	option balancing_enable '1'
-	option console_user 'aaaaa'
-	option console_password 'aaaaa'
 	option console_port '1188'
 	option health_check_type 'passwall_logic'
-	option health_check_inter '60'
+	option health_check_inter '10'
 
 config global_delay
 	option auto_on '0'
 	option start_daemon '1'
-	option start_delay '3'
+	option start_delay '60'
 
 config global_forwarding
 	option tcp_no_redir_ports 'disable'
@@ -313,8 +222,8 @@ config global_rules
 	list chnlist_url 'https://fastly.jsdelivr.net/gh/felixonmars/dnsmasq-china-list/google.china.conf'
 	option v2ray_location_asset '/usr/share/v2ray/'
 	option auto_update '1'
-	option week_update '1'
-	option time_update '0'
+	option week_update '0'
+	option time_update '1'
 	option geoip_update '1'
 	option geosite_update '1'
 
@@ -324,6 +233,7 @@ config global_app
 	option trojan_go_file '/usr/bin/trojan-go'
 	option brook_file '/usr/bin/brook'
 	option hysteria_file '/usr/bin/hysteria'
+	option chinadns_ng '/usr/bin/chinadns-ng'
 
 config global_subscribe
 	option filter_keyword_mode '1'
@@ -334,27 +244,121 @@ config global_subscribe
 	option ss_aead_type 'shadowsocks-libev'
 	option trojan_type 'trojan-plus'
 
-config auto_switch
-	option testing_time '1'
-	option connect_timeout '3'
-	option retry_num '3'
-	option shunt_logic '1'
-	option restore_switch '1'
-	option enable '0'
+config nodes 'myshunt'
+	option remarks '分流总节点'
+	option type 'Xray'
+	option protocol '_shunt'
+	option DirectGame '_direct'
+	option AD '_blackhole'
+	option BT '_direct'
+	option Direct '_direct'
+	option domainStrategy 'IPOnDemand'
+	option preproxy_enabled '1'
+	option main_node 'N0DWdQHk'
+	option ProxyGame 'SkcUzm24'
+	option ProxyGame_proxy_tag 'nil'
+	option Netflix 'Rm4iruMe'
+	option Netflix_proxy_tag 'nil'
+	option YouTube_proxy_tag 'main'
+	option Disney 'Rm4iruMe'
+	option Disney_proxy_tag 'nil'
+	option UBTV_proxy_tag 'nil'
+	option nivodTV 'SkcUzm24'
+	option nivodTV_proxy_tag 'nil'
+	option Tiktok_proxy_tag 'nil'
+	option OpenAI_proxy_tag 'main'
+	option Proxy 'N0DWdQHk'
+	option Proxy_proxy_tag 'nil'
+	option default_node '_direct'
+	option domainMatcher 'hybrid'
+	option YouTube 'nil'
+	option Tiktok 'nil'
+	option OpenAI 'nil'
+
+config nodes 'N0DWdQHk'
+	option remarks '负载均衡'
+	option type 'Socks'
+	option address '127.0.0.1'
+	option port '1181'
+
+config nodes 'Rm4iruMe'
+	option remarks 'Disney+'
+	option type 'Socks'
+	option address '127.0.0.1'
+	option port '1182'
+
+config nodes 'SkcUzm24'
+	option remarks '安博 TV'
+	option type 'Socks'
+	option address '127.0.0.1'
+	option port '1183'
 
 config subscribe_list
+	option remark '自建'
+	option url 'https://link.jscdn.cn/1drv/'
 	option allowInsecure '0'
 	option filter_keyword_mode '5'
 	option ss_aead_type 'global'
 	option trojan_type 'global'
 	option auto_update '0'
 	option user_agent 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/80.0.3987.122 Safari/537.36'
-	option remark '自建'
-	option url 'https://'
 
-config socks '3cb0ae95a4c742828ed60781bd4d5180'
+config socks 'Wutiop7e'
 	option enabled '1'
-	option http_port '1081'
+	option node 'N0DWdQHk'
 	option port '1080'
-	option node 'add79a6c533c4064be73b2c840a85ca8'
+	option http_port '1081'
+	option enable_autoswitch '0'
+
+config acl_rule
+	option enabled '1'
+	option remarks '乌班图'
+	option sources '00:0C:29:FF:D4:0C'
+	option tcp_no_redir_ports 'default'
+	option udp_no_redir_ports 'default'
+	option tcp_proxy_drop_ports 'default'
+	option udp_proxy_drop_ports 'default'
+	option tcp_redir_ports 'default'
+	option udp_redir_ports 'default'
+	option tcp_proxy_mode 'chnroute'
+	option udp_proxy_mode 'chnroute'
+	option tcp_node 'default'
+	option udp_node 'default'
+
+config acl_rule
+	option enabled '1'
+	option remarks '京东云'
+	option sources '192.168.1.7 192.168.1.8'
+	option tcp_no_redir_ports 'default'
+	option udp_no_redir_ports 'default'
+	option tcp_proxy_drop_ports 'default'
+	option udp_proxy_drop_ports 'default'
+	option tcp_redir_ports 'default'
+	option udp_redir_ports 'default'
+	option tcp_proxy_mode 'gfwlist'
+	option udp_proxy_mode 'gfwlist'
+	option tcp_node 'N0DWdQHk'
+	option udp_node 'N0DWdQHk'
+	option dns_mode 'xray'
+	option v2ray_dns_mode 'doh'
+	option remote_dns_doh 'https://1.1.1.2/dns-query'
+
+config acl_rule
+	option enabled '1'
+	option remarks '安博TV'
+	option sources '00:09:4C:C2:10:4D'
+	option tcp_no_redir_ports 'default'
+	option udp_no_redir_ports 'default'
+	option tcp_proxy_drop_ports 'default'
+	option udp_proxy_drop_ports 'default'
+	option tcp_redir_ports 'default'
+	option udp_redir_ports 'default'
+	option tcp_proxy_mode 'chnroute'
+	option udp_proxy_mode 'chnroute'
+	option tcp_node 'SkcUzm24'
+	option udp_node 'SkcUzm24'
+	option dns_mode 'xray'
+	option v2ray_dns_mode 'tcp'
+	option remote_dns '1.1.1.2'
+	option when_chnroute_default_dns 'remote'
 
