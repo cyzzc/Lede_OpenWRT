@@ -14,7 +14,7 @@ config macbind
 	option z7 '1'
 	option macaddr '48:7E:48:99:92:52'
 	option timeon '05:00'
-	option timeoff '10:59'
+	option timeoff '10:00'
 
 config macbind
 	option enable '1'
@@ -41,4 +41,30 @@ config macbind
 	option z7 '1'
 	option macaddr '192.168.1.63'
 	option timeoff '10:59'
+
+config macbind
+	option enable '1'
+	option z1 '1'
+	option z2 '1'
+	option z3 '1'
+	option z4 '1'
+	option z5 '1'
+	option z6 '1'
+	option z7 '1'
+	option macaddr '30:59:B7:CF:53:3A'
+	option timeon '04:00'
+	option timeoff '10:59'
+
+config macbind
+	option enable '1'
+	option timeon '00:00'
+	option z1 '1'
+	option z2 '1'
+	option z3 '1'
+	option z4 '1'
+	option z5 '1'
+	option z6 '1'
+	option z7 '1'
+	option macaddr 'B4:AE:2B:32:BB:17'
+	option timeoff '09:59'
 
