@@ -44,11 +44,21 @@ jobs:
         cd helloworld
         echo "commitHash_HelloWorld=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
         cd
-        
-        git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git -b packages passwall 
-        cd passwall
+
+        git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git -b master passpackages
+        cd passpackages
+        echo "commitHash_openwrt-passwall-packages=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+        cd
+             
+        git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git -b luci-smartdns-dev newpasswall 
+        cd newpasswall
         echo "commitHash_passwall=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
         cd
+
+        # git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall.git -b packages passwall 
+        # cd passwall
+        # echo "commitHash_passwall=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
+        # cd
         
         git clone --depth 1 https://github.com/vernesong/OpenClash.git -b master OpenClash 
         cd OpenClash
