@@ -45,7 +45,7 @@ jobs:
         echo "commitHash_HelloWorld=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
         cd
 
-        git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git -b openwrt-passwall-packages passpackages
+        git clone --depth 1 https://github.com/xiaorouji/openwrt-passwall-packages.git -b main openwrt-passwall-packages passpackages
         cd passpackages
         echo "commitHash_openwrt-passwall-packages=$(git rev-parse HEAD)" >> $GITHUB_OUTPUT
         cd
