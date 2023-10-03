@@ -15,4 +15,4 @@
 #sed -i "s/src-git/src-git-full/g" feeds.conf.default
 
 # Add a feed source 添加额外软件包
-echo 'src-git cyzzc_package https://github.com/cyzzc/Auto-Package' >>feeds.conf.default
+echo 'src-git auto_package https://github.com/cyzzc/Auto-Package' >>feeds.conf.default
