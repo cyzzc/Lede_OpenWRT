@@ -31,7 +31,7 @@ sed -i "/smartdns.git/a\PKG_SOURCE_VERSION:=$(curl -s https://api.github.com/rep
 #sed -i 's/60a3719ec739be2cc1e11724ac049b09a75059cb/60a3719ec739be2cc1e11724ac049b09a75059cb/g' feeds/packages/net/smartdns/Makefile
 sed -i 's/^PKG_MIRROR_HASH/#&/' feeds/packages/net/smartdns/Makefile
 git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/applications/luci-app-smartdns
-git clone --depth 1 https://github.com/pymumu/smartdns package/applications/smartdns
+git clone https://github.com/pymumu/smartdns package/applications/smartdns
 mkdir -p ./package/applications/smartdns_luci
 mkdir -p ./package/applications/smartdns
 cp -rf ./feeds/smartdns_luci/* ./package/applications/smartdns_luci
