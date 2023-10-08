@@ -20,7 +20,7 @@ sed -i "s/hostname='.*'/hostname='SZZzc_1288'/g" package/base-files/files/bin/co
 sed -i 's@.*CYXluq4wUazHjmCDBCqXF*@#&@g' package/lean/default-settings/files/zzz-default-settings
 
 ########### 更新lean的内置的smartdns版本 ###########
-sed -i 's/1.2023.42/1.2023.v43.0.21/g' feeds/packages/net/smartdns/Makefile
+sed -i 's/1.2023.42/1.2023.43/g' feeds/packages/net/smartdns/Makefile
 sed -i 's/ed102cda03c56e9c63040d33d4a391b56491493e/1ba6ee7cb98b5b6448bc2a2be318eb3518d4de79/g' feeds/packages/net/smartdns/Makefile
 sed -i 's/^PKG_MIRROR_HASH/#&/' feeds/packages/net/smartdns/Makefile
 
