@@ -191,7 +191,7 @@ jobs:
         token: ${{ secrets.ACTIONS_TRIGGER_PAT  }}
         repository: ${{ github.repository }}
         retain_days: 1
-        keep_minimum_runs: 3
+        keep_minimum_runs: 6
 
     - name: 删除旧 Releases
       uses: dev-drprasad/delete-older-releases@v0.2.1
