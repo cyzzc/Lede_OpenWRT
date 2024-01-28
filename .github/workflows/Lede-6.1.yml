@@ -109,7 +109,7 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        sed -i 's/KERNEL_PATCHVER:=5.15/KERNEL_PATCHVER:=6.6/g' target/linux/x86/Makefile
+        sed -i 's/KERNEL_PATCHVER:=6.6/KERNEL_PATCHVER:=6.6/g' target/linux/x86/Makefile
 
     - name: 下载软件包
       id: package
