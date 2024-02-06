@@ -115,11 +115,9 @@ jobs:
         curl -k --data chat_id="${{ env.TELEGRAM_CHAT_ID }}" --data "text=🎉 cyzzc@msn.com ${{ env.VERSION }} ${{matrix.target}} 开始编译OpenWrt_Lede-6.1 😋" "https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage"        
     
     - name: 克隆源代码
-      working-directory: /workdir
+      working-directory: ./
       run: |
-        df -hT $PWD
-        git clone $REPO_URL -b $REPO_BRANCH openwrt
-        ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        git clone --depth=1 $REPO_URL -b $REPO_BRANCH openwrt
         
     - name: 对比编译环境缓存
       uses: HiGarfield/cachewrtbuild@main
