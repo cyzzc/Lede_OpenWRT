@@ -144,6 +144,12 @@ jobs:
     - name: 更新 feeds
       run: cd openwrt && ./scripts/feeds update -a
 
+    - name: 安装 golang 1.22.0
+      run: |
+       cd openwrt
+       rm -rf feeds/packages/lang/golang
+       git clone https://github.com/sbwml/packages_lang_golang -b 22.x feeds/packages/lang/golang
+
     #- name: 执行回滚
      # working-directory: ./openwrt
      # run: |
