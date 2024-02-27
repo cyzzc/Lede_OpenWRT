@@ -27,3 +27,6 @@ sed -i 's@.*CYXluq4wUazHjmCDBCqXF*@#&@g' package/lean/default-settings/files/zzz
 ########### 安装smartdns（必选）###########
 # git clone https://github.com/PikuZheng/smartdns.git package/smartdns
 # git clone -b lede https://github.com/pymumu/luci-app-smartdns.git package/luci-app-smartdns
+
+########### 更改mosdns（必选）###########
+sed -i "s|CGO_ENABLED=0|CGO_ENABLED=1|g" feeds/packages/net/mosdns/Makefile
