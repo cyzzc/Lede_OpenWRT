@@ -48,7 +48,7 @@ jobs:
         echo "=============================================================================="
 
     - name: "Optimize Disk Space"
-      uses: "hugoalh/disk-space-optimizer-ghaction@v0.8.0"
+      uses: "hugoalh/disk-space-optimizer-ghaction@main"
       with:
         operate_sudo: "True"
         general_include: ".+"
@@ -244,7 +244,7 @@ jobs:
         curl -k --data chat_id="${{ env.TELEGRAM_CHAT_ID }}" --data "text=🎉 cyzzc@msn.com ${{ env.VERSION }} ${{matrix.target}} OpenWrt_Lede-6.1编译成功 😋 https://github.com/cyzzc/Lede_OpenWRT/releases" "https://api.telegram.org/bot${{ env.TELEGRAM_TOKEN }}/sendMessage"
 
     - name: 删除运行的工作流
-      uses: Mattraks/delete-workflow-runs@v2
+      uses: Mattraks/delete-workflow-runs@main
       with:
         token: ${{ secrets.ACTIONS_TRIGGER_PAT  }}
         repository: ${{ github.repository }}
