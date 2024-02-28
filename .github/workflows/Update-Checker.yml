@@ -77,7 +77,7 @@ jobs:
         echo ${{ steps.combHeader.outputs.commitHash_All }} | tee .commitHash_All
 
     - name: 删除运行记录
-      uses: Mattraks/delete-workflow-runs@v2
+      uses: Mattraks/delete-workflow-runs@main
       with:
         retain_days: 1
         keep_minimum_runs: 1
