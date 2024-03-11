@@ -92,7 +92,10 @@ nivod5.tv
 nivod6.tv
 nivod7.tv
 nivod8.tv
-nivod9.tv'
+nivod9.tv
+duggreat.com
+olddddd.com
+googleapis.com'
 
 config shunt_rules 'IYF'
 	option remarks '爱壹帆'
@@ -111,7 +114,9 @@ anygate.vip
 gstatic.com
 yfsp.tv
 dnvodcdn.me
-global-cdn.me'
+global-cdn.me
+google-analytics.com
+googletagmanager.com'
 
 config shunt_rules 'Tiktok'
 	option remarks 'Tiktok'
