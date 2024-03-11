@@ -110,7 +110,8 @@ etcbbc.xyz
 anygate.vip
 gstatic.com
 yfsp.tv
-dnvodcdn.me'
+dnvodcdn.me
+global-cdn.me'
 
 config shunt_rules 'Tiktok'
 	option remarks 'Tiktok'
