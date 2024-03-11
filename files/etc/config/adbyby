@@ -16,9 +16,4 @@ config adbyby
 
 config acl_rule
 	option filter_mode 'disable'
-	option ipaddr '192.168.1.21'
-
-config acl_rule
-	option filter_mode 'disable'
-	option ipaddr '192.168.1.22'
-
+	option ipaddr '192.168.1.60'
