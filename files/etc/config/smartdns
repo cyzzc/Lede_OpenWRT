@@ -32,14 +32,6 @@ config domain-rule
 config server
 	option enabled '1'
 	option type 'udp'
-	option name '电信 DNS'
-	option ip '202.96.134.133'
-	option port '53'
-	option server_group 'CN'
-
-config server
-	option enabled '1'
-	option type 'udp'
 	option name '腾讯 DNS'
 	option ip '119.28.28.28'
 	option port '53'
@@ -52,4 +44,8 @@ config server
 	option ip '101.226.4.6'
 	option port '53'
 	option server_group 'CN'
+
+config client-rule
+
+config ip-rule
 
