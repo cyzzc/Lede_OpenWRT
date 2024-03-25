@@ -66,8 +66,7 @@ fast.com'
 config shunt_rules 'YouTube'
 	option remarks 'YouTube'
 	option network 'tcp,udp'
-	option domain_list 'geosite:youtube
-tvb.com'
+	option domain_list 'geosite:youtube'
 
 config shunt_rules 'Disney'
 	option remarks 'Disney+'
@@ -129,6 +128,11 @@ tiktokv.com'
 config shunt_rules 'OpenAI'
 	option remarks 'OpenAI'
 	option domain_list 'geosite:openai'
+
+config shunt_rules 'TVB'
+	option remarks 'TVB 无线'
+	option network 'tcp,udp'
+	option domain_list 'geosite:tvb'
 
 config shunt_rules 'Proxy'
 	option remarks 'Proxy'
